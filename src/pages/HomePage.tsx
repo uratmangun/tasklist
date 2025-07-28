@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
-import { Check, Plus, BarChart3, User, LogIn, LogOut, Trash2 } from 'lucide-react'
+import { Check, Plus, BarChart3, User, LogIn, Trash2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { SignedIn, SignedOut, SignInButton, SignOutButton, useUser } from '@clerk/clerk-react'
+import { SignedIn, SignedOut, SignInButton } from '@clerk/clerk-react'
 
 interface Task {
   id: string
@@ -18,7 +17,6 @@ interface Task {
 }
 
 export default function HomePage() {
-  const { user } = useUser()
   
   const [tasks, setTasks] = useState<Task[]>([
     {
@@ -125,32 +123,6 @@ export default function HomePage() {
       {/* Content shown when user is signed in */}
       <SignedIn>
         <div className="min-h-screen bg-background">
-          {/* Header */}
-          <div className="border-b border-border bg-card">
-            <div className="max-w-4xl mx-auto px-4 py-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                    <Check className="w-5 h-5 text-primary-foreground" />
-                  </div>
-                  <h1 className="text-xl font-semibold text-foreground">TaskFlow</h1>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Avatar className="w-8 h-8">
-                    <AvatarImage src={user?.imageUrl} />
-                    <AvatarFallback>{user?.firstName?.charAt(0) || 'U'}</AvatarFallback>
-                  </Avatar>
-                  <span className="text-sm text-foreground hidden sm:block">{user?.firstName || 'User'}</span>
-                  <SignOutButton>
-                    <Button variant="ghost" size="sm">
-                      <LogOut className="w-4 h-4" />
-                    </Button>
-                  </SignOutButton>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div className="max-w-4xl mx-auto px-4 py-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* Main Task Area */}
