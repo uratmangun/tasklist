@@ -144,13 +144,13 @@ export default function HomePage() {
                       <select
                         value={priority}
                         onChange={(e) => setPriority(e.target.value as 'low' | 'medium' | 'high')}
-                        className="px-3 py-2 border border-border rounded-md bg-background text-foreground"
+                        className="h-9 px-3 py-2 border border-border rounded-md bg-background text-foreground text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                       >
                         <option value="low">Low</option>
                         <option value="medium">Medium</option>
                         <option value="high">High</option>
                       </select>
-                      <Button onClick={addTask}>
+                      <Button onClick={addTask} className="h-9 w-9">
                         <Plus className="w-4 h-4" />
                       </Button>
                     </div>
